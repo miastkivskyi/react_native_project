@@ -1,7 +1,7 @@
 {
   "expo": {
-    "name": "react-native-03",
-    "slug": "react-native-03",
+    "name": "react-native",
+    "slug": "react-native",
     "platforms": ["ios", "android", "web"],
     "version": "1.0.0",
     "orientation": "portrait",

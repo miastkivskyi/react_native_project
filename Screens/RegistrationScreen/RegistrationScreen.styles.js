@@ -12,7 +12,7 @@ const styles = StyleSheet.create({
     flex: 1,
     resizeMode: "cover",
   },
-  box: {
+  containerImage: {
     marginTop: "auto",
     justifyContent: "flex-end",
     alignItems: "center",
@@ -22,7 +22,7 @@ const styles = StyleSheet.create({
     borderTopStartRadius: 25,
     borderTopEndRadius: 25,
   },
-  add: {
+  addImage: {
     position: "absolute",
     top: -60,
     width: 120,
@@ -30,7 +30,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#F6F6F6",
     borderRadius: 16,
   },
-  addBtn: {
+  addButton: {
     position: "absolute",
     bottom: 14,
     right: -12,
@@ -47,7 +47,7 @@ const styles = StyleSheet.create({
     width: "50%",
   },
 
-  form: {
+  formContainer: {
     width: "100%",
   },
   formTitle: {
@@ -63,7 +63,7 @@ const styles = StyleSheet.create({
   inputBlock: {
     gap: 16,
   },
-  input: {
+  inputField: {
     borderWidth: 1,
     borderColor: "#E8E8E8",
     backgroundColor: "#F6F6F6",
@@ -74,35 +74,35 @@ const styles = StyleSheet.create({
   midle: {
     marginVertical: 16,
   },
-  passwordField: {
+  passwordFieldContainer: {
     position: "relative",
     justifyContent: "center",
   },
 
-  showBtn: {
+  showPasswordButton: {
     position: "absolute",
     right: 16,
   },
-  showBtnTitle: {
+  showPasswordButtonText: {
     fontSize: 16,
     lineHeight: 19,
     color: "#1B4371",
   },
-  btn: {
+  submitButton: {
     backgroundColor: "#FF6C00",
     borderRadius: 100,
     marginTop: 43,
     justifyContent: "center",
     alignItems: "center",
   },
-  btnTitle: {
+  submitButtonText: {
     color: "#FFFFFF",
     paddingVertical: 16,
     textAlign: "center",
     fontSize: 16,
     lineHeight: 19,
   },
-  limk: {
+  link: {
     marginTop: 16,
     textAlign: "center",
     fontSize: 16,

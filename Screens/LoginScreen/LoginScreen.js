@@ -1,16 +1,14 @@
 import React, { useState } from "react";
+import Container from "../../components/Container/Container";
 import {
   Text,
   View,
   Platform,
-  ImageBackground,
   TextInput,
   TouchableOpacity,
   KeyboardAvoidingView,
   TouchableWithoutFeedback,
   Keyboard,
-  Alert,
-  Dimensions,
 } from "react-native";
 import styles from "./LoginScreen.styles.js";
 
@@ -19,13 +17,13 @@ const INITIAL_STATE = {
   password: "",
 };
 
-const Login = ({ navigation }) => {
+const LoginScreen = ({ navigation }) => {
   const [state, setState] = useState(INITIAL_STATE);
-  const [isPasswordHidden, setIsPasswordHidden] = useState(true);
-  const [isKeyboardShown, setIsKeyboardShown] = useState(false);
+  const [hidePassword, setHidePassword] = useState(true);
+  const [isKeyboardVisible, setIsKeyboardVisible] = useState(false);
 
-  const togglePasswordHidden = () => setIsPasswordHidden(!isPasswordHidden);
-  const toggleKeyboardShown = () => setIsKeyboardShown(true);
+  const toggleHidePassword = () => setHidePassword(!hidePassword);
+  const showKeyboard = () => setIsKeyboardVisible(true);
 
   const handleEmailChange = (value) =>
     setState((prevState) => ({ ...prevState, email: value }));
@@ -34,84 +32,75 @@ const Login = ({ navigation }) => {
 
   const handleSubmit = () => {
     Keyboard.dismiss();
-    setIsKeyboardShown(false);
-    setIsPasswordHidden(true);
-    Alert.alert("Sign In", `${email}, ${password}`);
+    setIsKeyboardVisible(false);
+    setHidePassword(true);
     setState(INITIAL_STATE);
+    navigation.navigate("Home");
   };
 
   const hideKeyboard = () => {
-    setIsPasswordHidden(true);
-    setIsKeyboardShown(false);
+    setHidePassword(true);
+    setIsKeyboardVisible(false);
     Keyboard.dismiss();
   };
 
-  const { height, width } = Dimensions.get("window");
   const { email, password } = state;
+
   return (
     <TouchableWithoutFeedback onPress={hideKeyboard}>
       <KeyboardAvoidingView
-        style={styles.keyboard}
+        style={styles.keyboardContainer}
         behavior={Platform.OS == "ios" ? "padding" : "height"}
       >
-        <ImageBackground
-          style={{ ...styles.image, width: width, height: height }}
-          source={require("../../assets/images/background.jpg")}
-        >
-          <View style={styles.container}>
-            <View
-              style={{
-                ...styles.box,
-                paddingBottom: isKeyboardShown ? 80 : 144,
-              }}
-            >
-              <View style={styles.form}>
-                <Text style={styles.formTitle}>Login</Text>
-                <View style={styles.inputBlock}>
-                  <TextInput
-                    style={styles.input}
-                    value={email}
-                    onChangeText={handleEmailChange}
-                    onFocus={toggleKeyboardShown}
-                    placeholder="E-mail address"
-                  />
-                  <View style={styles.passwordField}>
-                    <TextInput
-                      style={styles.input}
-                      secureTextEntry={isPasswordHidden}
-                      value={password}
-                      onChangeText={handlePasswordChange}
-                      onFocus={toggleKeyboardShown}
-                      placeholder="Password"
-                    />
-                    <TouchableOpacity
-                      style={styles.showBtn}
-                      onPress={togglePasswordHidden}
-                    >
-                      <Text style={styles.showBtnTitle}>Show</Text>
-                    </TouchableOpacity>
-                  </View>
-                </View>
+        <Container>
+          <View style={styles.formContainer}>
+            <Text style={styles.formTitle}>Login</Text>
+            <View style={styles.inputBlock}>
+              <TextInput
+                style={styles.inputField}
+                value={email}
+                onChangeText={handleEmailChange}
+                onFocus={showKeyboard}
+                placeholder="E-mail address"
+              />
+              <View style={styles.passwordFieldContainer}>
+                <TextInput
+                  style={styles.inputField}
+                  secureTextEntry={hidePassword}
+                  value={password}
+                  onChangeText={handlePasswordChange}
+                  onFocus={showKeyboard}
+                  placeholder="Password"
+                />
                 <TouchableOpacity
-                  activeOpacity={0.8}
-                  style={styles.btn}
-                  onPress={handleSubmit}
+                  style={styles.showPasswordButton}
+                  onPress={toggleHidePassword}
                 >
-                  <Text style={styles.btnTitle}>Sign In</Text>
+                  <Text style={styles.showPasswordButtonText}>Show</Text>
                 </TouchableOpacity>
               </View>
-              <Text
-                style={styles.limk}
-                onPress={() => navigation.navigate("Registration")}
-              >
-                Don't have an account? Sign Up
-              </Text>
             </View>
+            <TouchableOpacity
+              activeOpacity={0.8}
+              style={styles.submitButton}
+              onPress={handleSubmit}
+            >
+              <Text style={styles.submitButtonText}>Sign In</Text>
+            </TouchableOpacity>
           </View>
-        </ImageBackground>
+          <Text
+            style={{
+              ...styles.link,
+              marginBottom: isKeyboardVisible ? 0 : 144,
+            }}
+            onPress={() => navigation.navigate("Registration")}
+          >
+            Don't have an account? Sign Up
+          </Text>
+        </Container>
       </KeyboardAvoidingView>
     </TouchableWithoutFeedback>
   );
 };
 
-export default Login;
+export default LoginScreen;

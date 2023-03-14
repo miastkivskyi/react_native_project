@@ -1,26 +1,9 @@
 import { StyleSheet } from "react-native";
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    fontFamily: "Roboto-Regular",
-  },
-  keyboard: {
+  keyboardContainer: {
     flex: 1,
   },
-  image: {
-    flex: 1,
-    resizeMode: "cover",
-  },
-  box: {
-    marginTop: "auto",
-    justifyContent: "flex-end",
-    alignItems: "center",
-    paddingHorizontal: 16,
-    backgroundColor: "#fff",
-    borderTopStartRadius: 25,
-    borderTopEndRadius: 25,
-  },
-  form: {
+  formContainer: {
     width: "100%",
   },
   formTitle: {
@@ -35,7 +18,7 @@ const styles = StyleSheet.create({
   inputBlock: {
     gap: 16,
   },
-  input: {
+  inputField: {
     borderWidth: 1,
     borderColor: "#E8E8E8",
     backgroundColor: "#F6F6F6",
@@ -43,34 +26,34 @@ const styles = StyleSheet.create({
     borderRadius: 8,
     color: "#212121",
   },
-  passwordField: {
+  passwordFieldContainer: {
     position: "relative",
     justifyContent: "center",
   },
-  showBtn: {
+  showPasswordButton: {
     position: "absolute",
     right: 16,
   },
-  showBtnTitle: {
+  showPasswordButtonText: {
     fontSize: 16,
     lineHeight: 19,
     color: "#1B4371",
   },
-  btn: {
+  submitButton: {
     backgroundColor: "#FF6C00",
     borderRadius: 100,
     marginTop: 43,
     justifyContent: "center",
     alignItems: "center",
   },
-  btnTitle: {
+  submitButtonText: {
     color: "#FFFFFF",
     paddingVertical: 16,
     textAlign: "center",
     fontSize: 16,
     lineHeight: 19,
   },
-  limk: {
+  link: {
     marginTop: 16,
     textAlign: "center",
     fontSize: 16,
