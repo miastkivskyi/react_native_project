@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     paddingHorizontal: 16,
     backgroundColor: "#FFFFFF",
   },
-  imageContainer: {
+  imageBox: {
     width: "100%",
     height: 240,
     marginTop: 32,
@@ -27,7 +27,7 @@ const styles = StyleSheet.create({
     backgroundColor: "#FFFFFF",
   },
 
-  uploadText: {
+  text: {
     color: "#BDBDBD",
     textAlign: "left",
     marginTop: 8,
@@ -63,13 +63,13 @@ const styles = StyleSheet.create({
     marginRight: 4,
   },
 
-  publishButton: {
+  btn: {
     backgroundColor: "#FF6C00",
     borderRadius: 100,
     justifyContent: "center",
     alignItems: "center",
   },
-  publishButtonText: {
+  btnTitle: {
     color: "#FFFFFF",
     paddingVertical: 16,
     textAlign: "center",
@@ -77,7 +77,7 @@ const styles = StyleSheet.create({
     lineHeight: 19,
   },
 
-  trashButtonContainer: {
+  btnTrashBox: {
     position: "absolute",
     width: "100%",
     bottom: 34,
@@ -85,7 +85,7 @@ const styles = StyleSheet.create({
     alignItems: "center",
   },
 
-  trashButton: {
+  btnTrash: {
     width: 70,
     height: 40,
     backgroundColor: "#F6F6F6",

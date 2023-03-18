@@ -6,7 +6,7 @@ const styles = StyleSheet.create({
     top: -60,
     width: 120,
     height: 120,
-    backgroundColor: "#F6F6F6",
+    backgroundColor: "#FFFFFF",
     borderRadius: 16,
   },
   addBtn: {
@@ -18,8 +18,14 @@ const styles = StyleSheet.create({
     justifyContent: "center",
     alignItems: "center",
     borderWidth: 1,
-    borderColor: "#FF6C00",
+    borderColor: "#E8E8E8",
+    backgroundColor: "#FFFFFF",
     borderRadius: 50,
+  },
+  image: {
+    width: 120,
+    height: 120,
+    borderRadius: 16,
   },
 });
 

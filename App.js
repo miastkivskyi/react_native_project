@@ -9,6 +9,9 @@ import * as SplashScreen from "expo-splash-screen";
 import Home from "./Screens/HomeScreen/Home";
 import Registration from "./Screens/RegistrationScreen/RegistrationScreen";
 import Login from "./Screens/LoginScreen/LoginScreen";
+import Comments from "./Screens/CommentsScreen/CommentScreen";
+import CreatePhoto from "./components/CreatePhoto/CreatePhoto";
+import Map from "./Screens/MapScreen/MapScreen";
 
 const MainStack = createStackNavigator();
 
@@ -53,6 +56,21 @@ const App = () => {
           name="Login"
           component={Login}
           options={{ headerShown: false }}
+        />
+        <MainStack.Screen
+          name="Map"
+          component={Map}
+          options={{ headerShown: true }}
+        />
+        <MainStack.Screen
+          name="Comments"
+          component={Comments}
+          options={{ headerShown: true }}
+        />
+        <MainStack.Screen
+          name="CreatePhoto"
+          component={CreatePhoto}
+          options={{ headerShown: true }}
         />
       </MainStack.Navigator>
     </NavigationContainer>
