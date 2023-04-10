@@ -1,4 +1,6 @@
-import { StyleSheet } from "react-native";
+import { StyleSheet, Dimensions } from "react-native";
+const { height, width } = Dimensions.get("window");
+
 const styles = StyleSheet.create({
   container: {
     display: "flex",
@@ -6,6 +8,8 @@ const styles = StyleSheet.create({
     fontFamily: "Roboto-Regular",
   },
   image: {
+    width: width,
+    height: height,
     flex: 1,
     resizeMode: "cover",
     justifyContent: "flex-end",
