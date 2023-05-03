@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { Feather } from "@expo/vector-icons";
+import * as Location from "expo-location";
 import Loader from "../../components/Loader";
 import { useKeyboard } from "../../helpers/hooks";
 import { initialPost } from "../../helpers/initial";
@@ -9,7 +10,7 @@ import { createPost, getPosts } from "../../redux/data/operations";
 import { delPhoto } from "../../redux/initialState/operations";
 import { takePhoto } from "../../helpers/ImagePicker";
 import { selectPrestate } from "../../redux/initialState/selectors";
-import GetCurrentLocation from "../../helpers/location";
+
 import {
   Text,
   View,
@@ -58,7 +59,32 @@ const CreatePosts = ({ navigation }) => {
   };
 
   useEffect(() => {
-    uri && GetCurrentLocation({ setState });
+    uri &&
+      (async () => {
+        let { status } = await Location.requestForegroundPermissionsAsync();
+        if (status !== "granted") {
+          return Alert.alert("Permission to access location was denied");
+        }
+
+        const {
+          coords: { latitude, longitude },
+        } = await Location.getCurrentPositionAsync();
+
+        if (latitude) {
+          const response = await Location.reverseGeocodeAsync({
+            latitude,
+            longitude,
+          });
+
+          const { country, city, subregion } = response[0];
+
+          setState((prevState) => ({
+            ...prevState,
+            coordinate: { latitude, longitude },
+            adress: `${country}, ${city ? city : subregion}`,
+          }));
+        }
+      })();
   }, [uri]);
 
   return (
